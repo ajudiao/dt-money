@@ -19,14 +19,14 @@ export function NewTrasactionModal() {
 
                 <form action="">
                         <input type="text" placeholder="Descrição" required />
-                        <input type="text" placeholder="Preço" required />
+                        <input type="number" placeholder="Preço" required />
                         <input type="text" placeholder="Categoria" required />
 
                         <TransactionType>
-                            <TransactionTypeButton variant="income">
+                            <TransactionTypeButton variant="income" value="income">
                                 <ArrowCircleUpIcon size={24} /> Entrada
                             </TransactionTypeButton>
-                            <TransactionTypeButton variant="outcome">
+                            <TransactionTypeButton variant="outcome" value="outcome">
                                 <ArrowCircleDown size={24} />
                                 Saída
                             </TransactionTypeButton>

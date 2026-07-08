@@ -33,6 +33,7 @@ export const Content = styled(Dialog.Content)`
             border-radius: 6px;
             border: 0;
             background: ${props => props.theme["gray-900"]};
+            color: ${props => props.theme["gray-300"]};
 
             &::placeholder {
                 color: ${(props) => props.theme["gray-300"]};
@@ -48,6 +49,7 @@ export const Content = styled(Dialog.Content)`
             border-radius: 6px;
             margin-top: 1.5rem;
             cursor: pointer;
+            color: ${props => props.theme["gray-100"]};
 
             &:hover {
                 background-color: ${(props) => props.theme["green-700"]};
@@ -69,7 +71,7 @@ export const CloseButton = styled(Dialog.Close)`
     color: ${(props) => props.theme["gray-500"]};
 `
 
-export const TransactionType = styled.div`
+export const TransactionType = styled(RadioGroup.Root)`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -80,7 +82,7 @@ interface TransactionTypeProps {
     variant: 'income' | 'outcome'
 }
 
-export const TransactionTypeButton = styled.button<TransactionTypeProps>`
+export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeProps>`
     background: ${props => props.theme["gray-700"]};
     padding: 1rem;
     display: flex;
@@ -95,4 +97,21 @@ export const TransactionTypeButton = styled.button<TransactionTypeProps>`
     svg {
         color: ${props => props.variant === 'income' ? props.theme["green-300"] : props.theme["red-300"]};
     }
+
+    &[data-state='unchecked']:hover {
+        transition: background-color 0.3s;
+        background: ${props => props.theme["gray-600"]};
+    } 
+
+    &[data-state='checked'] {
+        transition: background-color 0.3s;
+        color: ${props => props.theme.white};
+        background: ${props => props.variant === 'income' ? props.theme["green-500"] : props.theme["red-500"]};
+
+        border-color: ${props => props.variant === 'income' ? props.theme["green-500"] : props.theme["red-500"]};
+
+        svg {
+            color: ${props => props.theme.white};
+        }
+    } 
 `
